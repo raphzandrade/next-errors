@@ -1,5 +1,10 @@
-/* eslint-disable */
-export default {
+import nextJest from 'next/jest'
+
+const createJestConfig = nextJest({
+  dir: 'apps/my-app',
+})
+
+const baseJestConfig = {
   displayName: "my-app",
   preset: "../../jest.preset.js",
   transform: {
@@ -8,4 +13,7 @@ export default {
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   coverageDirectory: "../../coverage/apps/my-app",
-};
+}
+
+// export default baseJestConfig;
+export default createJestConfig(baseJestConfig)
